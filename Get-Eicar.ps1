@@ -24,9 +24,9 @@ function Get-Eicar {
 #Base64 of Eicar string
 $Base64Eicar = 'WDVPIVAlQEFQWzRcUFpYNTQoUF4pN0NDKTd9JEVJQ0FSLVNUQU5EQVJELUFOVElWSVJVUy1URVNULUZJTEUhJEgrSCo='
 
+#Default destination path is local user's Desktop (for high visibility and likelihood of allowed read/write permissions)
 $Path = '~/Desktop'
 $FilePath = Join-Path $Path EicarTest.txt
-
 
 If (!(Test-Path -Path $FilePath)) {
 
@@ -43,7 +43,6 @@ If (!(Test-Path -Path $FilePath)) {
             }
 }
      Else {
-        Write-Warning "Eicar already exists at $FilePath."
-}
-
+     Write-Warning "Eicar already exists at $FilePath."
+     }
 }
