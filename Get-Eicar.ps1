@@ -7,7 +7,7 @@ $Path = '~/Desktop'
 $FilePath = Join-Path $Path EicarTest.txt
 
 
-    If (!(Test-Path -Path $FilePath)) {
+If (!(Test-Path -Path $FilePath)) {
 
             Try {
 
