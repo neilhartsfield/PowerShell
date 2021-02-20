@@ -28,10 +28,9 @@ $Base64Eicar = 'WDVPIVAlQEFQWzRcUFpYNTQoUF4pN0NDKTd9JEVJQ0FSLVNUQU5EQVJELUFOVElW
 $Path = '~/Desktop'
 $FilePath = Join-Path $Path EicarTest.txt
 
-If (!(Test-Path -Path $FilePath)) {
-
+    If (!(Test-Path -Path $FilePath)) {
+    
             Try {
-
             $EicarString = [System.Convert]::FromBase64String($Base64Eicar)
             $Eicar = [System.Text.Encoding]::UTF8.GetString($EicarString)
             Set-Content -Value $Eicar -Encoding ASCII -Path $FilePath -Force
@@ -42,7 +41,7 @@ If (!(Test-Path -Path $FilePath)) {
             Write-Warning "Eicar file could not be created."
             }
 }
-     Else {
-     Write-Warning "Eicar already exists at $FilePath."
-     }
+    Else {
+    Write-Warning "Eicar already exists at $FilePath."
+    }
 }
