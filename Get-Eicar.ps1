@@ -55,6 +55,6 @@ $FilePath = Join-Path $Path EicarTest.txt
     Write-Warning "Eicar already exists at $FilePath."
     }
     
-    Get-Content "%LOGDIRECTORYHERE%" -tail 2 -wait | select-string 'EicarTest'
+    Get-Content "$env:DEFLOGDIR\OnAccessScan_Activity.log" -tail 1 -wait | select-string 'EicarTest'
     
 }
