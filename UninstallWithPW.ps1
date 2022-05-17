@@ -1,7 +1,3 @@
-# Log actions in the %temp% directory
-$Timestamp = Get-Date -Format "yyyy-MM-dd_THHmmss"
-$LogFile = "$env:TEMP\WCUninst_$Timestamp.log"
-
 #Base64 of uninstall password
 $Base64PW = 'cGFzc3dvcmQ='
 
