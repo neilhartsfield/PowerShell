@@ -98,7 +98,7 @@ $outputButton.Add_Click({
 
     if ($folderBrowserDialog.ShowDialog() -eq "OK") {
         # Set the output text box to the selected directory
-        $outputTextBox.Text = Join-Path -Path $folderBrowserDialog.SelectedPath -ChildPath "token.token"
+        $outputTextBox.Text = Join-Path -Path $folderBrowserDialog.SelectedPath -ChildPath "token.txt"
     }
 })
 
