@@ -102,7 +102,6 @@ $outputButton.Add_Click({
     }
 })
 
-
 # Define the action for the generate button
 $generateButton.Add_Click({
     # Get the values from the text boxes
@@ -154,4 +153,4 @@ $form.Controls.Add($expiryTextBox)
 $form.Controls.Add($generateButton)
 
 # Show the form
-$form.ShowDialog()
+$form.ShowDialog() | Out-Null
