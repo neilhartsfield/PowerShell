@@ -1,3 +1,12 @@
+<#
+.Synopsis
+	A GUI to assist generating uninstall tokens for Agent Protection
+	Author: Neil Hartsfield (nhartsfield@beyondtrust.com)
+	
+.Description
+	This script will enable you to generate a temporary uninstall token with a specified expiry time
+#>
+
 # Load the System.Windows.Forms assembly
 Add-Type -AssemblyName System.Windows.Forms
 
