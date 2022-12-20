@@ -15,8 +15,8 @@ $form = New-Object System.Windows.Forms.Form
 
 # Set the form properties
 $form.Text = "Agent Protection Token Generator"
-$form.Width = 500
-$form.Height = 300
+$form.Width = 480
+$form.Height = 250
 
 # Create a label for the private variable
 $privateLabel = New-Object System.Windows.Forms.Label
