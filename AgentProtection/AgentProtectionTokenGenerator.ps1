@@ -115,7 +115,7 @@ $generateButton.Add_Click({
         return
     }
 
-    if ($expiry -notmatch "^(\d+d)?(\d+h)?$") {
+    if ($expiry -notmatch "^(?:(?:[1-2]?[0-3]d)|(?:3d))(?:(?:[0-1]?[0]|2[0-4])h)?$") {
         [System.Windows.Forms.MessageBox]::Show("Invalid expiry time format.", "Error", "OK", "Error")
         return
     }
@@ -127,7 +127,7 @@ $generateButton.Add_Click({
   # Check the exit code of the utility
     if ($result.ExitCode -eq 0) {
         # Display a success message
-        [System.Windows.Forms.MessageBox]::Show("Package generated successfully!", "Success", "OK", "Information")
+        [System.Windows.Forms.MessageBox]::Show("Token generated successfully!", "Success", "OK", "Information")
 
         # Close the form
         $form.Close()
@@ -137,7 +137,7 @@ $generateButton.Add_Click({
 
     } else {
         # Display an error message
-        [System.Windows.Forms.MessageBox]::Show("Package generation failed. Please check the logs for more information.", "Error", "OK", "Error")
+        [System.Windows.Forms.MessageBox]::Show("Token generation failed.", "Error", "OK", "Error")
     }
 })
 
