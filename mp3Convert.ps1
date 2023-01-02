@@ -1,6 +1,10 @@
+<# The purpose of this script is to remove all special characters from saved .mp4 files, 
+rename that file accordingly, so that way ffmpeg can parse it properly and convert the file
+to .mp3 without errors. #>
+
 # Get all .mp4 files in the current directory
-cd C:\my\mp3
-$files = Get-ChildItem . -Filter "*.mp4"
+Set-Location -Path "C:\My\mp3"
+$files = Get-ChildItem C:\my\mp3 -Filter "*.mp4"
 
 # Loop through each file
 foreach ($file in $files) {
