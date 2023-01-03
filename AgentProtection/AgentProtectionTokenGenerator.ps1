@@ -109,22 +109,35 @@ $generateButton.Add_Click({
     $output = $outputTextBox.Text
     $expiry = $expiryTextBox.Text
 
-    # Validate the input
-    if ($private -eq "" -or $output -eq "" -or $expiry -eq "") {
-        [System.Windows.Forms.MessageBox]::Show("Please enter a value for all variables.", "Error", "OK", "Error")
+# Validate the input
+$maxHours = 3*24
+
+if ($expiry -match "^(\d+d)?(\d+h)?$") {
+    $days = 0
+    $hours = 0
+    if ($matches[1]) {
+        $days = $matches[1] -replace "d", ""
+    }
+    if ($matches[2]) {
+        $hours = $matches[2] -replace "h", ""
+    }
+    $totalHours = [double]$days*24 + $hours
+    if ($totalHours -gt $maxHours) {
+        [System.Windows.Forms.MessageBox]::Show("Invalid expiry time. Maximum total hours is $maxHours.", "Error", "OK", "Error")
         return
     }
+} else {
+    [System.Windows.Forms.MessageBox]::Show("Invalid expiry time format.", "Error", "OK", "Error")
+    return
+}
 
-    if ($expiry -notmatch "^(?:(?:[1-2]?[0-3]d)|(?:3d))(?:(?:[0-1]?[0]|2[0-4])h)?$") {
-        [System.Windows.Forms.MessageBox]::Show("Invalid expiry time format.", "Error", "OK", "Error")
-        return
-    }
 
-    # Generate the package
-    $executable = "C:\Program Files\Avecto\Privilege Guard Management Consoles\AgentProtectionUtility.exe"
-    $arguments = "UNINSTALL /EXPIRY $expiry /PRIVATE $private /TOKEN $output"
-    $result = Start-Process -FilePath $executable $arguments -Wait -PassThru
-  # Check the exit code of the utility
+# Generate the package
+$executable = "C:\Program Files\Avecto\Privilege Guard Management Consoles\AgentProtectionUtility.exe"
+$arguments = "UNINSTALL /EXPIRY $expiry /PRIVATE $private /TOKEN $output"
+$result = Start-Process -FilePath $executable $arguments -Wait -PassThru
+
+# Check the exit code of the utility
     if ($result.ExitCode -eq 0) {
         # Display a success message
         [System.Windows.Forms.MessageBox]::Show("Token generated successfully!", "Success", "OK", "Information")
